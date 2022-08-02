@@ -64,11 +64,12 @@ class War {
     };
 
     attackRound (attackerArmy, defenderArmy) {
-        const defender = this[defenderArmy][Math.floor(Math.random() * this[defenderArmy].length)];
+        let defenderIndex = Math.floor(Math.random() * this[defenderArmy].length);
+        const defender = this[defenderArmy][defenderIndex];
         const attacker = this[attackerArmy][Math.floor(Math.random() * this[attackerArmy].length)];
         const attack = defender.receiveDamage(attacker.strength); 
         if (defender.health <= 0) {
-            this[defenderArmy].splice(this[defenderArmy].indexOf(defender), 1);
+            this[defenderArmy].splice(this[defenderArmy][defenderIndex], 1);
         };
         return attack;
     }
